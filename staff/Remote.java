@@ -1,7 +1,7 @@
-package utility;
+package staff;
 
 import passenger.HandBaggage;
-import staff.Robot;
+import baggageScanner.Piece;
 
 public class Remote {
     private Robot robot;

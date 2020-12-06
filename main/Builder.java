@@ -8,9 +8,8 @@ import staff.HouseKeeper;
 import staff.Inspector;
 import staff.Supervisor;
 import staff.Technician;
-import utility.Configuration;
-import utility.ProfileType;
-import utility.ProhibitedItem;
+import staff.ProfileType;
+import baggageScanner.ProhibitedItem;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -69,7 +68,6 @@ public class Builder {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        java.util.List<Passenger> list = new java.util.ArrayList<>(passengers);
         return passengers;
     }
 

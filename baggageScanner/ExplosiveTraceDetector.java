@@ -1,5 +1,6 @@
-package utility;
+package baggageScanner;
 
+import baggageScanner.TestStripe;
 import library.text_search.BruteForce;
 
 import java.util.Arrays;

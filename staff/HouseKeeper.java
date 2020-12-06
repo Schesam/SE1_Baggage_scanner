@@ -1,7 +1,5 @@
 package staff;
 
-import utility.ProfileType;
-
 import java.time.LocalDate;
 
 public class HouseKeeper extends Employee {

@@ -2,7 +2,7 @@ package staff;
 
 import passenger.HandBaggage;
 import passenger.Layer;
-import utility.Piece;
+import baggageScanner.Piece;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;

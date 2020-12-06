@@ -8,9 +8,8 @@ import passenger.HandBaggage;
 import passenger.Layer;
 import rooms.CheckRoom;
 import rooms.IWorkingPlace;
-import utility.ProfileType;
-import utility.Result;
-import utility.TestStripe;
+import baggageScanner.Result;
+import baggageScanner.TestStripe;
 
 import java.time.LocalDate;
 

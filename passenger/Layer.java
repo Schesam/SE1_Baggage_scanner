@@ -1,6 +1,6 @@
 package passenger;
 
-import utility.ProhibitedItem;
+import baggageScanner.ProhibitedItem;
 
 import java.util.Random;
 

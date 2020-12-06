@@ -1,6 +1,6 @@
 package passenger;
 
-import utility.IPeople;
+import staff.IPeople;
 
 import java.util.Arrays;
 import java.util.LinkedList;

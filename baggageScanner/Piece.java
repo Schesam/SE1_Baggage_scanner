@@ -1,4 +1,4 @@
-package utility;
+package baggageScanner;
 
 public class Piece {
     private String content;

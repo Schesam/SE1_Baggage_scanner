@@ -1,4 +1,4 @@
-package utility;
+package baggageScanner;
 
 import passenger.HandBaggage;
 

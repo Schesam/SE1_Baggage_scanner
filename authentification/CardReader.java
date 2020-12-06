@@ -2,7 +2,7 @@ package authentification;
 
 import baggageScanner.BaggageScanner;
 import baggageScanner.State;
-import utility.ProfileType;
+import staff.ProfileType;
 
 public class CardReader {
 

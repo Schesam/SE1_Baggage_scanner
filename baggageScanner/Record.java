@@ -1,4 +1,4 @@
-package utility;
+package baggageScanner;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

@@ -1,6 +1,6 @@
 package rooms;
 
-import utility.IPeople;
+import staff.IPeople;
 
 import java.util.ArrayList;
 import java.util.Arrays;

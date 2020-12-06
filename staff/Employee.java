@@ -1,8 +1,6 @@
 package staff;
 
 import authentification.IDCard;
-import utility.IPeople;
-import utility.ProfileType;
 
 import java.time.LocalDate;
 

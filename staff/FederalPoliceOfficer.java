@@ -1,16 +1,12 @@
 package staff;
 
-import baggageScanner.ManualPostControl;
 import baggageScanner.Tray;
 import passenger.HandBaggage;
 import passenger.Layer;
 import passenger.Passenger;
-import rooms.CheckRoom;
 import rooms.FederalPoliceOffice;
-import utility.Piece;
-import utility.ProfileType;
-import utility.ProhibitedItem;
-import utility.Remote;
+import baggageScanner.Piece;
+import baggageScanner.ProhibitedItem;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

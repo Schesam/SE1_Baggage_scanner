@@ -1,7 +1,7 @@
 package authentification;
 
 import library.aes.Application;
-import utility.ProfileType;
+import staff.ProfileType;
 
 public class MagnetStripe {
     private final String secretKey = "dhbw$20^20_1253402%SE1";

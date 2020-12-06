@@ -1,6 +1,6 @@
 package passenger;
 
-import utility.ProhibitedItem;
+import baggageScanner.ProhibitedItem;
 
 public class HandBaggage {
     private Layer[] layer = new Layer[5];

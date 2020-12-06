@@ -1,7 +1,6 @@
 package staff;
 
 import baggageScanner.BaggageScanner;
-import utility.ProfileType;
 
 import java.time.LocalDate;
 

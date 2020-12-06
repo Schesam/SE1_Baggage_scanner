@@ -3,7 +3,6 @@ package baggageScanner;
 import staff.Inspector;
 import staff.Supervisor;
 import staff.Technician;
-import utility.Result;
 
 public class BaggageScanner {
     private final RollerConveyor roller;

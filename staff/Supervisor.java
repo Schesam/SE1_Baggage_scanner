@@ -1,9 +1,7 @@
 package staff;
 
-import authentification.CardReader;
 import baggageScanner.State;
 import baggageScanner.Supervision;
-import utility.ProfileType;
 
 import java.time.LocalDate;
 

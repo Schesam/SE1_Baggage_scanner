@@ -1,6 +1,6 @@
 package authentification;
 
-import utility.ProfileType;
+import staff.ProfileType;
 
 import java.time.LocalDate;
 

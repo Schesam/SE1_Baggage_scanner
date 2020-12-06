@@ -1,4 +1,4 @@
-package utility;
+package staff;
 
 public interface IPeople {
 }

@@ -1,4 +1,4 @@
-package utility;
+package baggageScanner;
 
 public enum Result {
     CLEAN, KNIFE, WEAPON, EXPLOSIVE;
