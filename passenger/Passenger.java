@@ -28,4 +28,13 @@ public class Passenger implements IPeople {
     public HandBaggage getNextBaggage() {
         return bags.poll();
     }
+
+    public void addBaggage(HandBaggage handBaggage) {
+        bags.add(handBaggage);
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

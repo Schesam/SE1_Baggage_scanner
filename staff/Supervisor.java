@@ -33,7 +33,7 @@ public class Supervisor extends Employee {
 
     public void unlockBaggageScanner() {
         if (workingPlace.getBaggageScanner().getState() == State.LOCKED) {
-
+            workingPlace.getBaggageScanner().getOpStation().unlockBaggageScanner(this, getBirthDate().getYear());
         }
     }
 }

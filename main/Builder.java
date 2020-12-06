@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
 import java.util.LinkedList;
+import java.util.Objects;
 import java.util.Queue;
 
 public class Builder {
@@ -32,7 +33,7 @@ public class Builder {
     }
 
     public static Simulation build() {
-        return new Simulation(Configuration.getCurrentAlg(), createInspectors(), createSuperVisor(), createOffice(), createTechnician(), createHouseKeeper(), readPassengers());
+        return new Simulation(createInspectors(), createSuperVisor(), createOffice(), createTechnician(), createHouseKeeper(), readPassengers());
     }
 
     private static Supervisor createSuperVisor() {
@@ -41,8 +42,8 @@ public class Builder {
 
     private static Queue<Passenger> readPassengers() {
         Queue<Passenger> passengers = new LinkedList<>();
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(Builder.class.getClassLoader().getResourceAsStream(Configuration.DATA_PATH)))) {
-            String line = "";
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(Objects.requireNonNull(Builder.class.getClassLoader().getResourceAsStream(Configuration.DATA_PATH))))) {
+            String line;
             while ((line = br.readLine()) != null) {
                 String[] lineArr = line.split(";", 3);
                 HandBaggage[] bags = new HandBaggage[Integer.parseInt(lineArr[1])];
@@ -50,9 +51,9 @@ public class Builder {
                 if (!lineArr[2].equals("-")) {
                     String[] prohibited = lineArr[2].substring(1, lineArr[2].length() - 1).split(lineArr[2].contains(";") ? ";" : ",");
                     if (lineArr[2].contains(";")) {
-                        for (int i = 0; i < prohibited.length; i++) {
-                            String[] test = prohibited[i].split(",");
-                            bags[Integer.parseInt(prohibited[i].split(",")[1]) - 1] = getBaggage(prohibited[i].split(",")[0].charAt(0), Integer.parseInt(prohibited[i].split(",")[2]));
+                        for (String s : prohibited) {
+                            String[] test = s.split(",");
+                            bags[Integer.parseInt(s.split(",")[1]) - 1] = getBaggage(s.split(",")[0].charAt(0), Integer.parseInt(s.split(",")[2]));
                         }
                     } else {
                         bags[Integer.parseInt(prohibited[1]) - 1] = getBaggage(prohibited[0].charAt(0), Integer.parseInt(prohibited[2]));

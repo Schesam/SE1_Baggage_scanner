@@ -25,6 +25,10 @@ public class FederalPoliceOffice {
         arrested.add(p);
     }
 
+    public boolean isArrested(Passenger p) {
+        return arrested.contains(p);
+    }
+
     public Robot getRobot() {
         return robots[new Random().nextInt(robots.length)];
     }

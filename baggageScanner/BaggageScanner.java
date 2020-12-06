@@ -1,30 +1,22 @@
 package baggageScanner;
 
-import rooms.FederalPoliceOffice;
 import staff.Inspector;
 import staff.Supervisor;
 import staff.Technician;
 import utility.Result;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 public class BaggageScanner {
-    private final Queue<Tray> trays;
     private final RollerConveyor roller;
     private final Belt belt;
     private final Scanner scanner;
     private final OperatingStation opStation;
     private final ManualPostControl manualPostControl;
     private final Supervision supervision;
-    private final Algorithm alg;
     private final Technician technician;
     private final Inspector[] inspectors = new Inspector[3];
     private State state = State.SHUTDOWN;
-    private FederalPoliceOffice office = new FederalPoliceOffice();
 
-    public BaggageScanner(Algorithm alg, Technician technician, Inspector i1, Inspector i2, Inspector i3, Supervisor sup, FederalPoliceOffice office) {
-        this.alg = alg;
+    public BaggageScanner(Technician technician, Inspector i1, Inspector i2, Inspector i3, Supervisor sup) {
         this.technician = technician;
         inspectors[0] = i1;
         inspectors[1] = i2;
@@ -34,10 +26,8 @@ public class BaggageScanner {
         this.roller = new RollerConveyor(this, i1);
         this.opStation = new OperatingStation(this, i2);
         this.manualPostControl = new ManualPostControl(this, i3);
-        this.office = office;
         this.belt = new Belt(this);
         this.scanner = new Scanner();
-        this.trays = new LinkedList<>();
     }
 
     public State getState() {
@@ -54,10 +44,6 @@ public class BaggageScanner {
 
     public OperatingStation getOpStation() {
         return opStation;
-    }
-
-    public ManualPostControl getManualPostControl() {
-        return manualPostControl;
     }
 
     private boolean checkState() {

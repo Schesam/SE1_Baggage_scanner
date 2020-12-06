@@ -37,7 +37,7 @@ public class IDCard {
     }
 
     public boolean isValid() {
-        return isLocked() && !LocalDate.now().until(getValidUntil()).isNegative();
+        return !isLocked() && !LocalDate.now().until(getValidUntil()).isNegative();
     }
 
     public CardType getType() {
