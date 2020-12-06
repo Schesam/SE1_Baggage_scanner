@@ -1,6 +1,5 @@
 package baggageScanner;
 
-import passenger.Passenger;
 import rooms.FederalPoliceOffice;
 import staff.Inspector;
 import staff.Supervisor;
@@ -18,10 +17,10 @@ public class BaggageScanner {
     private final OperatingStation opStation;
     private final ManualPostControl manualPostControl;
     private final Supervision supervision;
-    private State state = State.SHUTDOWN;
     private final Algorithm alg;
     private final Technician technician;
     private final Inspector[] inspectors = new Inspector[3];
+    private State state = State.SHUTDOWN;
     private FederalPoliceOffice office = new FederalPoliceOffice();
 
     public BaggageScanner(Algorithm alg, Technician technician, Inspector i1, Inspector i2, Inspector i3, Supervisor sup, FederalPoliceOffice office) {

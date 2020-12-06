@@ -7,8 +7,10 @@ import passenger.Layer;
 import passenger.Passenger;
 import rooms.CheckRoom;
 import rooms.FederalPoliceOffice;
+import utility.Piece;
 import utility.ProfileType;
 import utility.ProhibitedItem;
+import utility.Remote;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -20,6 +22,7 @@ public class FederalPoliceOfficer extends Employee {
     private Passenger arrestedPassenger;
     private List<ProhibitedItem> takenWeapons = new ArrayList<>();
     private List<HandBaggage> takenBaggage = new ArrayList<>();
+    private Remote remote;
 
 
     public FederalPoliceOfficer(String name, LocalDate birthDate, ProfileType type, int pin, LocalDate validUntil, String grade, FederalPoliceOffice office) {
@@ -50,5 +53,9 @@ public class FederalPoliceOfficer extends Employee {
         arrestedPassenger = null;
         takenWeapons.clear();
         takenBaggage.clear();
+    }
+
+    public Piece[] destroyWithHighPressureWaterJet(HandBaggage baggage, Robot robot) {
+        return new Remote(robot).destroyWithHighPressureWaterJet(baggage);
     }
 }

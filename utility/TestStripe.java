@@ -1,5 +1,7 @@
 package utility;
 
+import passenger.HandBaggage;
+
 import java.util.Arrays;
 import java.util.Random;
 
@@ -14,7 +16,7 @@ public class TestStripe {
         }
     }
 
-    public void placeExp(){
+    public void stripeOn(HandBaggage baggage) {
         Random r = new Random();
         int i = r.nextInt(length);
         int j = r.nextInt(width-3);

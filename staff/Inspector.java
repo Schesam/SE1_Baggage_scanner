@@ -86,9 +86,9 @@ public class Inspector extends Employee {
         }
     }
 
-    public void swipe(TestStripe stripe) {
+    public void swipe(TestStripe stripe, HandBaggage baggage) {
         if (workingPlace instanceof ManualPostControl) {
-            stripe.placeExp();
+            stripe.stripeOn(baggage);
         }
     }
 }

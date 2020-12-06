@@ -8,9 +8,7 @@ import passenger.Passenger;
 import rooms.CheckRoom;
 import rooms.FederalPoliceOffice;
 import staff.*;
-import utility.IPeople;
-import utility.ProhibitedItem;
-import utility.Result;
+import utility.*;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -49,7 +47,7 @@ public class Simulation {
     }
 
     public void activateScanner() {
-        baggageScanner.getOpStation().unlockBaggageScanner(inspectors[1].getBirthDate().getYear());
+        baggageScanner.getOpStation().activateBaggageScanner(inspectors[1].getBirthDate().getYear());
     }
 
     public void run() {
@@ -90,16 +88,18 @@ public class Simulation {
                             officers[1].leave();
                             officers[2].leave();
                             room.clearRoom();
-                            break;
                         } else {
                             Robot robot = federalPoliceOffice.getRobot();
-
+                            TestStripe stripe = new TestStripe();
+                            inspectors[2].swipe(stripe, baggageScanner.getBelt().getTracks()[0].getFirstTray().getHandBaggage());
+                            new ExplosiveTraceDetector().checkStripe(stripe);
+                            officers[1].destroyWithHighPressureWaterJet(baggageScanner.getBelt().getTracks()[0].removeFirstBaggage(), robot);
                         }
+
                     }
                 }
             }
         }
-
     }
 
     public void shutdownScanner() {

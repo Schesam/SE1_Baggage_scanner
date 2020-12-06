@@ -1,5 +1,6 @@
 package staff;
 
+import authentification.CardReader;
 import baggageScanner.State;
 import baggageScanner.Supervision;
 import utility.ProfileType;
@@ -27,6 +28,12 @@ public class Supervisor extends Employee {
             workingPlace.getBaggageScanner().start();
         } else {
             workingPlace.getBaggageScanner().shutdown();
+        }
+    }
+
+    public void unlockBaggageScanner() {
+        if (workingPlace.getBaggageScanner().getState() == State.LOCKED) {
+
         }
     }
 }
