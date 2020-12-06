@@ -21,6 +21,10 @@ public class FederalPoliceOffice {
         return officers.get(num);
     }
 
+    public List<FederalPoliceOfficer> getOfficers() {
+        return officers;
+    }
+
     public void addArrestedPassenger(Passenger p) {
         arrested.add(p);
     }

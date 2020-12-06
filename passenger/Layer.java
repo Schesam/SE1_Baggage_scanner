@@ -2,6 +2,7 @@ package passenger;
 
 import baggageScanner.ProhibitedItem;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class Layer {
@@ -48,5 +49,19 @@ public class Layer {
     @Override
     public String toString() {
         return "Layer: " + getContent();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Layer layer = (Layer) o;
+        return Objects.equals(content, layer.content);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(content);
     }
 }

@@ -11,7 +11,7 @@ public class IDCard {
     private final LocalDate validUntil;
     private boolean isLocked = false;
     private int numWrongEntrys = 0;
-    private final CardType type;
+    private CardType type;
 
     public IDCard(LocalDate validUntil, ProfileType type, int pin) {
         this.id = lastId++;

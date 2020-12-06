@@ -17,6 +17,10 @@ public class MagnetStripe {
         return profileType;
     }
 
+    public void setProfileType(ProfileType profileType) {
+        this.profileType = profileType;
+    }
+
     public boolean checkPIN(int pin) {
         return new Application().decrypt(encPin, secretKey).equals(String.valueOf(pin));
     }

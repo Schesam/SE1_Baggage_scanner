@@ -18,14 +18,12 @@ public class FederalPoliceOfficer extends Employee {
     private Passenger arrestedPassenger;
     private List<ProhibitedItem> takenWeapons = new ArrayList<>();
     private List<HandBaggage> takenBaggage = new ArrayList<>();
-    private Remote remote;
-
 
     public FederalPoliceOfficer(String name, LocalDate birthDate, ProfileType type, int pin, LocalDate validUntil, String grade, FederalPoliceOffice office) {
         super(name, birthDate, type, pin, validUntil);
         this.grade = grade;
         this.office = office;
-        office.addOfficer(this);
+       // office.addOfficer(this);
     }
 
     public void arrest(Passenger p) {

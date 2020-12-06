@@ -4,17 +4,20 @@ import staff.IPeople;
 
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.Objects;
 import java.util.Queue;
 
 public class Passenger implements IPeople {
-    private Queue<HandBaggage> bags;
-    private String name;
+    private final Queue<HandBaggage> bags;
+    private final String name;
 
-    public Passenger(String name, HandBaggage... h){
+    public Passenger(String name, HandBaggage... h) {
         this.name = name;
         bags = new LinkedList<>();
-        Arrays.stream(h).limit(3).forEach(bags::add);
-        Arrays.stream(h).limit(3).forEach(hb -> hb.setOwner(this));
+        Arrays.stream(h).limit(3).forEach(hb -> {
+            hb.setOwner(this);
+            bags.add(hb);
+        });
     }
 
     public Queue<HandBaggage> getBags() {
@@ -36,5 +39,22 @@ public class Passenger implements IPeople {
     @Override
     public String toString() {
         return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Passenger passenger = (Passenger) o;
+        return Objects.equals(bags, passenger.bags) && Objects.equals(name, passenger.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(bags, name);
     }
 }

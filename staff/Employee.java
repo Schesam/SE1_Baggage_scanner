@@ -29,4 +29,6 @@ public class Employee implements IPeople {
     public IDCard getCard() {
         return card;
     }
+
+
 }

@@ -37,7 +37,7 @@ public class OperatingStation implements IWorkingPlace {
 
     public boolean unlockBaggageScanner(Supervisor supervisor, int pin) {
         if(supervisor.getCard().isValid() && reader.unlockOperatingStationValid(supervisor.getCard(), pin, baggageScanner)) {
-            baggageScanner.activate();
+            baggageScanner.unlock();
             inspector.getCard().unlock();
             return true;
         }

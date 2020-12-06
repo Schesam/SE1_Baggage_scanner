@@ -8,10 +8,10 @@ public enum Algorithm implements IStringMatching {
     BOYERMOORE(new BoyerMoore()), KNUTHMORRISPRATT(new KnuthMorrisPratt());
 
 
-    private Algorithm(IStringMatching matcher) {
+    Algorithm(IStringMatching matcher) {
         this.matcher = matcher;
     }
-    private IStringMatching matcher;
+    private final IStringMatching matcher;
 
     @Override
     public int search(String text, String pattern) {

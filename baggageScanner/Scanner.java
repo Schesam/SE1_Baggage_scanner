@@ -5,7 +5,10 @@ import main.Configuration;
 
 public class Scanner {
 
+    private int scanCount = 0;
+
     public Record scan(Tray t) {
+        scanCount++;
         Layer[] layer = t.getHandBaggage().getLayer();
         for (int i = 0; i < layer.length; i++) {
             if (Configuration.getCurrentAlg().search(layer[i].getContent(), ProhibitedItem.EXPLOSIVE.toString()) != -1) {
@@ -17,5 +20,9 @@ public class Scanner {
             }
         }
         return new Record(Result.CLEAN, -1);
+    }
+
+    public int getScanCount() {
+        return scanCount;
     }
 }

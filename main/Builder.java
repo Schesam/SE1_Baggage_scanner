@@ -44,31 +44,35 @@ public class Builder {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(Objects.requireNonNull(Builder.class.getClassLoader().getResourceAsStream(Configuration.DATA_PATH))))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] lineArr = line.split(";", 3);
-                HandBaggage[] bags = new HandBaggage[Integer.parseInt(lineArr[1])];
-
-                if (!lineArr[2].equals("-")) {
-                    String[] prohibited = lineArr[2].substring(1, lineArr[2].length() - 1).split(lineArr[2].contains(";") ? ";" : ",");
-                    if (lineArr[2].contains(";")) {
-                        for (String s : prohibited) {
-                            String[] test = s.split(",");
-                            bags[Integer.parseInt(s.split(",")[1]) - 1] = getBaggage(s.split(",")[0].charAt(0), Integer.parseInt(s.split(",")[2]));
-                        }
-                    } else {
-                        bags[Integer.parseInt(prohibited[1]) - 1] = getBaggage(prohibited[0].charAt(0), Integer.parseInt(prohibited[2]));
-                    }
-                }
-                for (int i = 0; i < bags.length; i++) {
-                    if (bags[i] == null) {
-                        bags[i] = new HandBaggage();
-                    }
-                }
-                passengers.add(new Passenger(lineArr[0], bags));
+                passengers.add(createPassenger(line));
             }
         } catch (IOException ex) {
             ex.printStackTrace();
         }
         return passengers;
+    }
+
+    public static Passenger createPassenger(String line) {
+        String[] lineArr = line.split(";", 3);
+        HandBaggage[] bags = new HandBaggage[Integer.parseInt(lineArr[1])];
+
+        if (!lineArr[2].equals("-")) {
+            String[] prohibited = lineArr[2].substring(1, lineArr[2].length() - 1).split(lineArr[2].contains(";") ? ";" : ",");
+            if (lineArr[2].contains(";")) {
+                for (String s : prohibited) {
+                    String[] test = s.split(",");
+                    bags[Integer.parseInt(s.split(",")[1]) - 1] = getBaggage(s.split(",")[0].charAt(0), Integer.parseInt(s.split(",")[2]));
+                }
+            } else {
+                bags[Integer.parseInt(prohibited[1]) - 1] = getBaggage(prohibited[0].charAt(0), Integer.parseInt(prohibited[2]));
+            }
+        }
+        for (int i = 0; i < bags.length; i++) {
+            if (bags[i] == null) {
+                bags[i] = new HandBaggage();
+            }
+        }
+        return new Passenger(lineArr[0], bags);
     }
 
     private static HandBaggage getBaggage(char type, int pos) {

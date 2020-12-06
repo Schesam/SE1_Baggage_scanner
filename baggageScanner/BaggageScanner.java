@@ -4,6 +4,9 @@ import staff.Inspector;
 import staff.Supervisor;
 import staff.Technician;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class BaggageScanner {
     private final RollerConveyor roller;
     private final Belt belt;
@@ -14,6 +17,7 @@ public class BaggageScanner {
     private final Technician technician;
     private final Inspector[] inspectors = new Inspector[3];
     private State state = State.SHUTDOWN;
+    private Queue<Record> records = new LinkedList<>();
 
     public BaggageScanner(Technician technician, Inspector i1, Inspector i2, Inspector i3, Supervisor sup) {
         this.technician = technician;
@@ -61,6 +65,10 @@ public class BaggageScanner {
         }
     }
 
+    public Scanner getScanner() {
+        return scanner;
+    }
+
     public Belt getBelt() {
         return belt;
     }
@@ -68,7 +76,9 @@ public class BaggageScanner {
     public Result scan() {
         if (checkState()) {
             state = State.INUSE;
-            Result res = scanner.scan(belt.getTrayUnderScanner()).getResult();
+            Record rec = scanner.scan(belt.getTrayUnderScanner());
+            records.add(rec);
+            Result res = rec.getResult();
             if (res.isProhibited()) {
                 inspectors[2].moveProhibitedItemToSecurityTrack();
             }
@@ -76,6 +86,10 @@ public class BaggageScanner {
             return res;
         }
         return Result.CLEAN;
+    }
+
+    public Queue<Record> getRecords() {
+        return records;
     }
 
     public void alarm() {
@@ -102,12 +116,32 @@ public class BaggageScanner {
         }
     }
 
+    public void lock() {
+        state = State.LOCKED;
+    }
+
+    void unlock() {
+        if (state == State.LOCKED) {
+            state = State.ACTIVATED;
+        }
+    }
+
     void activate() {
-        state = State.ACTIVATED;
+        if (state == State.DEACTIVATED) {
+            state = State.ACTIVATED;
+        }
     }
 
     public void shutdown() {
         maintenance();
         state = State.SHUTDOWN;
+    }
+
+    public ManualPostControl getManualPostControl() {
+        return manualPostControl;
+    }
+
+    public Technician getTechnician() {
+        return technician;
     }
 }
